@@ -15,7 +15,7 @@
     --bg-color: #1f242d;
     --second-bg-color: #323946;
     --text-color: #fff;
-    --main-color: #0ef;
+    --main-color: #ba3b46; /**/
 }
 
 html {
@@ -118,6 +118,7 @@ span {
 
 .home-content p {
     font-size: 1.6rem;
+    padding-right: 1.6rem; /* */
 }
 
 .social-media a {
@@ -148,7 +149,7 @@ span {
     border-radius: 4rem;
     box-shadow: 0 0 1rem var(--main-color);
     font-size: 1.6rem;
-    color: var(--second-bg-color);
+    color: var(--text-color); /**/
     letter-spacing: .1rem;
     font-weight: 600;
     transition: .5 ease;
@@ -376,7 +377,7 @@ span {
 
 .footer-iconTop a i {
     font-size: 2.4rem;
-    color: var(--second-bg-color);
+    color: var(--text-color); /**/
 }
 
 /* BREAKPOINTS */
