@@ -11,8 +11,13 @@ if (isset($POST['enviar'])) {
         $header = "From: noreply@example.com" . "\r\n";
         $header .= "Reply-To: noreply@example.com" . "\r\n";
         $header .= 'X-Mailer: PHP/' . phpversion();
-        $mail = @mail("madape05@gmail.com", $asunto, $mensaje, $header);
+
+        $mensaje_completo = $email. "\r\n";
+        $mensaje_completo .= $telefono. "\r\n";
+        $mensaje_completo .= $mensaje. "\r\n";
         
+        $mail = mail("madape05@gmail.com", $asunto, $mensaje_completo, $header);
+
         if ($mail) {
             echo "<h4>¡Mail enviado exitosamente</h4>";
         }
