@@ -157,15 +157,15 @@
 
         <form action="" id="contacto">
             <div class="input-box">
-                <input type="text" placeholder="Nombre Completo" id="nombre">
-                <input type="email" placeholder="Correo Electrónico" id="email">
+                <input type="text" placeholder="Nombre Completo" name="nombre" required="">
+                <input type="email" placeholder="Correo Electrónico" name="email" required="">
             </div>
             <div class="input-box">
-                <input type="number" placeholder="Télefono" id="telefono">
-                <input type="text" placeholder="Asunto" id="asunto">
+                <input type="number" placeholder="Télefono" name="telefono" required="">
+                <input type="text" placeholder="Asunto" name="asunto" required="">
             </div>
-            <textarea name="" id="mensaje" cols="30" rows="10" placeholder="Tu Mensaje"></textarea>
-            <input type="submit" value="Enviar Mensaje" class="btn">
+            <textarea name="" id="mensaje" cols="30" rows="10" placeholder="Tu Mensaje" name="mensaje"></textarea>
+            <input type="submit" value="Enviar Mensaje" class="btn" name="enviar">
             <div id="error"></div>
         </form>
     </section>
