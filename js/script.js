@@ -71,7 +71,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     };
 
     try {
-        const response = await fetch('api-contacto-production.up.railway.app/send-email', {
+        const response = await fetch('https://api-contacto-production.up.railway.app/send-email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
