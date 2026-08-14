@@ -76,7 +76,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     };
 
     try {
-        const response = await fetch('https://api-contacto-oove.onrender.com/send-email', {
+        const response = await fetch('https://api-contacto-gffwgvc9fdhbauew.canadacentral-01.azurewebsites.net/send-email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
