@@ -13,7 +13,7 @@ let navLinks = document.querySelectorAll('header nav a');
 
 window.onscroll = () => {
     sections.forEach(sec => {
-        var top = window.scrollY;
+        let top = window.scrollY;
         let offset = sec.offsetTop - 150;
         let height = sec.offsetHeight;
         let id = sec.getAttribute('id');
@@ -25,43 +25,48 @@ window.onscroll = () => {
             });
         };
     });
+
     // sticky navbar
     let header = document.querySelector('header');
-
-    header.classList.toggle('sticky', window.scrollY > 100);
+    header.classList.toggle('sticky', window.scrollY > 50);
 
     // remove toggle icon and navbar when click navbar link (scroll)
     menuIcon.classList.remove('bx-x');
     navbar.classList.remove('active');
 };
 
-// scroll reveal
+// scroll reveal animations
 ScrollReveal({ 
-    // reset: true,
-    distance: '80px',
-    duration: 2000,
-    delay: 200
+    distance: '40px',
+    duration: 1200,
+    delay: 150
 });
 
-ScrollReveal().reveal('.home-content, .heading', {origin: 'top'});
-ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, contact form', {origin: 'bottom'});
-ScrollReveal().reveal('.home-content h1, .about-img', {origin: 'left'});
-ScrollReveal().reveal('.home-content p, .about-content', {origin: 'right'});
+ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
+ScrollReveal().reveal('.home-img, .skills-container, .services-container, .portfolio-container, contact form', { origin: 'bottom' });
+ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
+ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
-// typed js
+// typed js for rolling multiple roles
 const typed = new Typed('.multiple-text', {
-    strings: ['Web Designer','Frontend Developer', 'Backend Developer', 'DBA'],
-    typeSpeed: 100,
-    backSpeed: 100,
-    backDelay: 1000,
+    strings: ['Frontend Developer', 'Backend Developer', 'WordPress Specialist', 'Automation & AI Enthusiast'],
+    typeSpeed: 80,
+    backSpeed: 60,
+    backDelay: 1200,
     loop: true
 });
 
-// form submission
+// form submission handler
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const form = e.target;
+    const submitBtn = form.querySelector('input[type="submit"]');
+    const originalValue = submitBtn.value;
+    
+    submitBtn.value = "Enviando...";
+    submitBtn.disabled = true;
+
     const data = {
         nombre: form.nombre.value,
         email: form.email.value,
@@ -71,19 +76,22 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     };
 
     try {
-        const response = await fetch('https://api-contacto-production.up.railway.app/send-email', {
+        const response = await fetch('https://api-contacto-oove.onrender.com/send-email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
 
         if (response.ok) {
-            alert('Correo enviado correctamente');
+            alert('¡Correo enviado correctamente! Me pondré en contacto pronto.');
             form.reset();
         } else {
             alert('Error al enviar el correo. Por favor, inténtalo de nuevo más tarde.');
         }
     } catch (err) {
-        alert('Error de conexión. Por favor, inténtalo de nuevo más tarde.');
+        alert('Error de conexión con el servidor. Inténtalo más tarde.');
+    } finally {
+        submitBtn.value = originalValue;
+        submitBtn.disabled = false;
     }
 });
