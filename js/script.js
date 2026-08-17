@@ -76,7 +76,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     };
 
     try {
-        const response = await fetch('https://api-contacto-gffwgvc9fdhbauew.canadacentral-01.azurewebsites.net/send-email', {
+        const response = await fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -84,7 +84,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
         if (response.ok) {
             alert('¡Correo enviado correctamente! Me pondré en contacto pronto.');
-            form.reset();
+            e.target.reset();
         } else {
             alert('Error al enviar el correo. Por favor, inténtalo de nuevo más tarde.');
         }
